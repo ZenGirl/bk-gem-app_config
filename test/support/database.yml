@@ -1,0 +1,31 @@
+---
+base: &base
+  adapter: mysql2
+  encoding: utf8
+  pool: 10
+  port: 3306
+  username: authenticate
+  password: 6JXOa7RM
+  timeout: 5000
+
+development:
+  <<: *base
+  host: 127.0.0.1
+  adapter: sqlite3
+  database: db/development.sqlite3
+
+test: &test
+  <<: *base
+  host: 127.0.0.1
+  adapter: sqlite3
+  database: db/test.sqlite3
+
+staging:
+  <<: *base
+  host: localhost
+  database: authenticate_staging
+
+production:
+  <<: *base
+  host: 10.150.3.215
+  database: authenticate_production
