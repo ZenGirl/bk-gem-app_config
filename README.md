@@ -17,7 +17,7 @@ And then execute:
 A global variable is created name `AppConfig` which is a `Hashie::Mash`.
 
 You should ensure you have `require 'bk/gem/app_config'` as the first thing in your app.
-(Having require in the gemspec should handle this)
+(Having require in the gemfile should handle this)
 
 Standard variables include:
 
@@ -38,7 +38,7 @@ Some gems respond to `AppConfig.verbose`, so you can set it like this:
 
 When included, the following actions are performed:
 
-    AppConfig.project.root = Dir.pwd
+    AppConfig.project.root = [root of your project]
     AppConfig.env          = ENV['RACK_ENV'] || 'development'
     AppConfig.lib_dir      = File.expand_path(File.join(AppConfig.project.root, 'lib'))
     $LOAD_PATH.unshift(AppConfig.lib_dir) unless $LOAD_PATH.include?(AppConfig.lib_dir)
@@ -57,8 +57,16 @@ At all points in your code you can now refer to `AppConfig`.
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/bk-gem-app_config/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+Fork it ( https://github.com/ZenGirl/bk-gem-app_config/fork )
+
+Play.
+
+Minitests are included from bk-gem-minitest
+
+So you can do this:
+
+    VERBOSE=true bundle exec rake tests:all
+
+This includes minitest (spec), simplecov, cane and reek.
+
+Found a bug? Tell me!
